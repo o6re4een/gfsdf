@@ -26,7 +26,7 @@ app.use(bp.urlencoded({ extended: true }))
 
 
 app.get('/', (req,res) =>{
-    res.sendFile(path.join(__dirname , './client', 'index.html'));
+    res.sendFile('index.html', {root: path.join(__dirname, './client')});
 });
 
 const checkParams = (req, res, next)=>{
