@@ -11,7 +11,7 @@ const corsOptions = ({
   origin: "*",
   credentials: true
 })
-app.use(express.static(path.join(__dirname, './client')));
+app.use(express.static(path.join(__dirname, './public')));
 app.use(
   cors()
 );
@@ -26,7 +26,7 @@ app.use(bp.urlencoded({ extended: true }))
 
 
 app.get('/', (req,res) =>{
-    res.sendFile('index.html', {root: path.join(__dirname, './client')});
+    res.sendFile('index.html', {root: path.join(__dirname, './public')});
 });
 
 const checkParams = (req, res, next)=>{
