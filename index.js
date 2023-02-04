@@ -5,15 +5,17 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const Web3 = require('web3');
 require('dotenv').config()
+const path = require('path');
 
 const corsOptions = ({
   origin: "*",
   credentials: true
 })
-
+app.use(express.static(path.join(__dirname, './client')));
 app.use(
   cors()
 );
+
 
 
 app.options('/*', (_, res) => {
@@ -21,6 +23,11 @@ app.options('/*', (_, res) => {
   });
 app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
+
+
+app.get('/', (req,res) =>{
+    res.sendFile(path.join(__dirname , './client', 'index.html'));
+});
 
 const checkParams = (req, res, next)=>{
   
@@ -95,8 +102,8 @@ const asyncheckTx = async(req, res, next) =>{
           break;
         case 137:
             value = web3.utils.fromWei(tx.value, 'ether');
-            {value>81 ? successChecked = true : successChecked= false}
-            // {value> 0 ? successChecked = true : successChecked= false}
+            // {value>81 ? successChecked = true : successChecked= false}
+            {value> 0 ? successChecked = true : successChecked= false}
             break;
         default:
             value = web3.utils.fromWei(tx.value, 'ether');
