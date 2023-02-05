@@ -34,7 +34,7 @@ app.use(bp.urlencoded({ extended: true }))
 
 
 
-app.post("/bill", (req,res)=>{
+app.use("/bill", (req,res)=>{
    
     const billId = qiwiApi.generateId();
     const lifetime = qiwiApi.getLifetimeByDay(1);
