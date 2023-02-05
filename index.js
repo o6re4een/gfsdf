@@ -34,7 +34,7 @@ app.use(bp.urlencoded({ extended: true }))
 
 
 
-app.use("/bill", (req,res)=>{
+app.post("/bill", (req,res)=>{
    
     const billId = qiwiApi.generateId();
     const lifetime = qiwiApi.getLifetimeByDay(1);
@@ -63,5 +63,5 @@ app.use("/bill", (req,res)=>{
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
   });
-  
+
 module.exports = app;
