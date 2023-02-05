@@ -28,9 +28,9 @@ app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
 
 
-app.get('/', (req,res) =>{
-    res.sendFile('index.html', {root: path.join(__dirname, './client')});
-});
+// app.get('/', (req,res) =>{
+//     res.sendFile('index.html', {root: path.join(__dirname, './client')});
+// });
 
 
 
