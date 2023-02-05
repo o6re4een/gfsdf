@@ -34,7 +34,7 @@ app.use(bp.urlencoded({ extended: true }))
 
 
 
-app.post("/bill", (req,res)=>{
+app.post("/bill", async(req,res)=>{
    
     const billId = qiwiApi.generateId();
     const lifetime = qiwiApi.getLifetimeByDay(1);
@@ -48,13 +48,11 @@ app.post("/bill", (req,res)=>{
         successUrl: 'https://clck.ru/33SmAy',
        
     };
-    qiwiApi.createBill( billId, fields ).then( (data) => {
-       return res.json({
+    const data = await qiwiApi.createBill( billId, fields)
+   
+    return res.json({
         payUrl: data.payUrl
        })
-    });
-   
-
 
 
     
