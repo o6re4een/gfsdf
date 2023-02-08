@@ -41,7 +41,7 @@ app.post("/bill", async(req,res)=>{
     console.log("first")
 
     const fields = {
-        amount: 5000,
+        amount: 2999,
         currency: 'RUB',
         comment: 'Trade bot',
         expirationDateTime: lifetime,
