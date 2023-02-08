@@ -16,7 +16,7 @@ const corsOptions = ({
   origin: "*",
   credentials: true
 })
-
+app.use(express.static(path.join(__dirname, './client')));
 app.use(
   cors()
 );
