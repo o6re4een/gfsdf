@@ -39,7 +39,7 @@ app.post("/bill", async(req,res)=>{
    
     const billId = qiwiApi.generateId();
     const lifetime = qiwiApi.getLifetimeByDay(1);
-    console.log("first")
+  
 
     const fields = {
         amount: 2999,
